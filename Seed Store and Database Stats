@@ -21,11 +21,17 @@ INSERT INTO seeds VALUES (15, "marigold", 2.99, "orange", 24, 70);
 SELECT * FROM seeds
 ORDER BY price;
 
-––what are five seeds under $3.50 and over 24 inches?
+––what are five seeds under $3.50 and over grow to 24 inches?
 SELECT id, name, price, height_inches FROM seeds 
 WHERE height_inches > 24 
 AND price < 3.50 
 ORDER BY price;
 
+––what's the total price per flower height?
+SELECT height_inches, SUM(price) FROM seeds 
+GROUP BY height_inches;
 
-SELECT height_inches, SUM(price) FROM seeds GROUP BY height_inches;
+––what are the top five seeds based on seed amount?
+SELECT name, number_seeds, price FROM seeds
+ORDER BY number_seeds desc
+LIMIT 5;
